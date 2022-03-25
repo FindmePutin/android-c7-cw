@@ -4,46 +4,39 @@ import java.io.Serializable;
 
 class Items implements Serializable {
 
+    String textFood;
+    int imagefood;
+    double textPrice;
 
-
-    String itemName;
-    int itemImage;
-    double itemPrice;
-
-    /*
-    public Items("cheese", R.drawable.cheese, 2) {
-        this.itemName = "cheese";
-        this.itemIamge = R.drawable.cheese;
-        this.itemPrice = 2;
-    }
-     */
-    public Items(String itemName, int itemImage, double itemPrice) {
-        this.itemName = itemName;
-        this.itemImage = itemImage;
-        this.itemPrice = itemPrice;
+    public String getTextFood() {
+        return textFood;
     }
 
-    public String getItemName() {
-        return itemName;
+    public void setTextFood(String textFood) {
+        this.textFood = textFood;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public int getImagefood() {
+        return imagefood;
     }
 
-    public int getItemImage() {
-        return itemImage;
+    public void setImagefood(int imagefood) {
+        this.imagefood = imagefood;
     }
 
-    public void setItemImage(int itemIamge) {
-        this.itemImage = itemIamge;
+    public double getTextPrice() {
+        return textPrice;
     }
 
-    public double getItemPrice() {
-        return itemPrice;
+    public void setTextPrice(double textPrice) {
+        this.textPrice = textPrice;
     }
 
-    public void setItemPrice(double itemPrice) {
-        this.itemPrice = itemPrice;
+    public Items(String textFood, int imagefood, double textPrice) {
+        this.textFood = textFood;
+        this.imagefood = imagefood;
+        this.textPrice = textPrice;
+
+
     }
 }

@@ -1,7 +1,9 @@
 package com.example.android.listviewproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.shapes.Shape;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Items cheese = new Items("cheese", R.drawable.cheese, 2);
         shopItems.add(cheese);
@@ -49,7 +52,39 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Items peresentitems = shopItems.get(position);
+
+                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+
+                intent.putExtra("items" , peresentitems);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
-}
+

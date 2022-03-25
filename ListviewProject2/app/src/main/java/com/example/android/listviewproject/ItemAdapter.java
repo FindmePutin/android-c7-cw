@@ -17,7 +17,7 @@ import java.util.List;
 
 class ItemAdapter extends ArrayAdapter<Items> {
 
-    List<Items> items;//Arraylist
+    List<Items> items;
 
     final AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
 
@@ -30,21 +30,46 @@ class ItemAdapter extends ArrayAdapter<Items> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
-        //
+
         view = LayoutInflater.from(getContext()).inflate(R.layout.list_item1, parent, false);
-        //
+
         Items currentItem = items.get(position);
-        //
-        TextView shapeNameTextView = view.findViewById(R.id.item1_name);
-        shapeNameTextView.setText(currentItem.getItemName());
 
-        //
-        ImageView shapeImageTextView = view.findViewById(R.id.item1_image);
-        shapeImageTextView.setImageResource(currentItem.getItemImage());
+        TextView Name = view.findViewById(R.id.itemName);
+        Name.setText(currentItem.getTextFood());
 
-        //
-        TextView price = view.findViewById(R.id.item1_price);
-        price.setText(currentItem.getItemPrice() + "");
+
+        ImageView shapeImageTextView = view.findViewById(R.id.ImageView);
+        shapeImageTextView.setImageResource(currentItem.getImagefood());
+        TextView price = view.findViewById(R.id.itemprice);
+
+        price.setText(currentItem.getTextPrice() + "");
+
+        ImageView RemoveImg = view.findViewById(R.id.delete);
+        RemoveImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog alertDialog = new AlertDialog.Builder(getContext())
+                        .setTitle("Are you sure about that?")
+                        .setPositiveButton("Yes" , new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int x){
+                                items.remove(position);
+                                notifyDataSetChanged();
+
+                            }
+                                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                    @Override
+                            public void onClick(DialogInterface dialogInterface, int x) {
+                                      dialogInterface.dismiss();
+                                    }
+                                }).show();
+                          alertDialog.create();
+
+            }
+        });
+
+
 
      
         return view;
